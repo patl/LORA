@@ -9,7 +9,7 @@ end
  end
 
  Then(/^press on Create an account button$/) do
-   @browser.element(:class, 'button').click
+   @browser.iframe(:class, 'login_iframe').link(:text, 'Create').click
  end
 
  And(/^Verify that Create My Account page is displayed$/) do
@@ -18,7 +18,7 @@ end
 
 
  And(/^Verify that Fb icon is displayed$/) do
-   @browser.element(:css, "div[alt='Facebook'] > div > div").present? == true
+   @browser.a(:class, "fb_button").present? == true
  end
 
  Then(/^Fill greeting Mr or Mrs or Miss$/) do
