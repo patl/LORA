@@ -22,7 +22,7 @@ end
  end
 
  Then(/^Fill greeting Mr or Mrs or Miss$/) do
-   @browser.element(:xpath, ".//*[@id='RegistrationForm']/fieldset/div[1]/label[2]").click
+   @browser.label(:text, "Ms./Mrs.").click
  end
 
 And(/^fill first name$/) do
@@ -54,9 +54,49 @@ Then(/^press on Create your account button$/) do
 end
 
 When(/^user is created he should see Welcome first and last name$/) do
-  @browser.element(:class, "account_header_name").text == 'Welсome'.upcase + (@name1).upcase + ' ' + (@name2).upcase
+  @browser.span(:class, "account_user_name").inner_html == 'Welcome'
 end
 
-And(/^verify that breadcrumbs are present:  Home My Account Personal Info & Subscriptions$/) do
-  pending
+And(/^fill birthday$/) do
+  #fill date
+  @browser.element(:id, 'dwfrm_profile_customer_birthdayfields_daySelectBoxItText').click
+  @browser.element(:link, "02").click
+  #fill mm
+  @browser.element(:id, 'dwfrm_profile_customer_birthdayfields_monthSelectBoxItText').click
+  @browser.element(:link, "03").click
+  #fill yy
+  @browser.element(:id, 'dwfrm_profile_customer_birthdayfields_yearSelectBoxItText').click
+  @browser.element(:link, "2010").click
+end
+
+And(/^fill Phone number$/) do
+  @browser.element(:id, 'dwfrm_profile_customer_phone').send_keys('0623123123')
+end
+
+Then(/^he press on Connection button$/) do
+  @browser.iframe(:class, 'login_iframe').div(:text, 'Connection').click
+end
+
+And(/^Verify validation message for login field$/) do
+  @browser.iframe(:class, 'login_iframe').span(:class , "error_message").text == "Please enter your email address"
+end
+
+And(/^verify validation message for password field$/) do
+  @browser.iframe(:class, 'login_iframe').element(:xpath , "//form[@id='dwfrm_login']/fieldset/div[2]/span").text == "Please enter your password"
+end
+
+When(/^he fill login field with correct email$/) do
+  @browser.iframe(:class, 'login_iframe').text_field(:placeholder , "Email *").set("ogboiko@gmail.com")
+end
+
+When(/^he filles password field with correct fiel$/) do
+  @browser.iframe(:class, 'login_iframe').text_field(:id, "dwfrm_login_password").set("ogboiko123")
+end
+
+Then(/^he press on forgor your password link$/) do
+  @browser.iframe(:class, 'login_iframe').a(:class, "password_reset").click
+end
+
+When(/^user is redirected to Password recovery page$/) do
+  @browser.element(:id, "account-passwordresetdialog-page").text
 end
