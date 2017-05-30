@@ -1,25 +1,19 @@
 When(/^user do mouseover on My account link form header$/) do
-  browser.a(:class, 'account_navigation_link').click
+  sleep (4)
+  @browser.element(:class, 'account_navigation_link').hover
+  sleep (4)
 end
 
  Then(/^he should see the Sign In pop-up$/) do
-   @browser.element(:id, 'my_account_slot').present? == true
- end
-
- And(/^verify that Fb button is displayed$/) do
-   @browser.element(:css,"#gigyaLoginContainerLogin_p0 > tbody > tr > td > table > tbody > tr > td > center > div[alt='Facebook'] > div").present? == true
- end
-
- And(/^verify that New customer section is displayed$/) do
-   @browser.element(:class, "slot_header").text == 'NEW CUSTOMER?'.upcase
+   Watir::Wait.until {@browser.element(:class, 'js_accountNavigation').visible?}
  end
 
  Then(/^press on Create an account button$/) do
-   @browser.element(:link, "Create an account".upcase).click
+   @browser.element(:class, 'button').click
  end
 
  And(/^Verify that Create My Account page is displayed$/) do
-   @browser.element(:class, "account_section_heading").text == 'Create My Account'.upcase
+   @browser.element(:css, "h1").text == 'Create an Account'.upcase
  end
 
 

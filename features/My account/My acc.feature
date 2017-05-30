@@ -5,8 +5,6 @@ Feature: HP
     Scenario: Press on my acc from header
       When user do mouseover on My account link form header
       Then he should see the Sign In pop-up
-      And verify that Fb button is displayed
-      And verify that New customer section is displayed
       Then press on Create an account button
       And Verify that Create My Account page is displayed
 

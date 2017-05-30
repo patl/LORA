@@ -1,14 +1,13 @@
 #require 'selenium-webdriver'
 require 'cucumber'
-require 'rspec'
+#require 'rspec'
 require 'watir'
-
 Given(/^open the site$/) do
   @browser = Watir::Browser.new :chrome
   @browser.cookies.clear
   @browser.window.maximize
   @browser.goto 'https://storefront:loreal1@dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
-  #@browser.goto 'http://dev16-lora-loreal.demandware.net/on/demandware.store/Sites-Lora-Site'
+  #@browser.goto 'https://storefront:loreal1@staging-apac-loreal.demandware.net/on/demandware.store/Sites-armani-au-Site'
   begin
     alert = @browser.alert.exists?
     if alert == true
@@ -17,33 +16,6 @@ Given(/^open the site$/) do
       p 'no alert'
     end
   end
-   year = [('1980'..'2017')].map { |i| i.to_a }.flatten
-  @year = (0..0).map { year[rand(year.length)] }.join
-
-  make_column = [('1'..'5')].map { |i| i.to_a }.flatten
-  @make_column = (0..0).map { make_column[rand(make_column.length)] }.join
-
-  make_row = [('1'..'7')].map { |i| i.to_a }.flatten
-  @make_row = (0..0).map { make_row[rand(make_row.length)] }.join
-
-  tire_width_column = [('1'..'2')].map { |i| i.to_a }.flatten
-  @tire_width_column = (0..0).map { tire_width_column[rand(tire_width_column.length)] }.join
-
-  tire_width_row = [('1'..'9')].map { |i| i.to_a }.flatten
-  @tire_width_row = (0..0).map { tire_width_row[rand(tire_width_row.length)] }.join
-
-  bolt_pattern_c = [('1'..'3')].map { |i| i.to_a }.flatten
-  @bolt_pattern_c = (0..0).map { bolt_pattern_c[rand(bolt_pattern_c.length)] }.join
-
-  bolt_pattern_r = [('1'..'9')].map { |i| i.to_a }.flatten
-  @bolt_pattern_r = (0..0).map { bolt_pattern_r[rand(bolt_pattern_r.length)] }.join
-
-  brand_option_w = [('1'..'9')].map { |i| i.to_a }.flatten
-  @brand_option_w = (0..0).map { brand_option_w[rand(brand_option_w.length)] }.join
-
-  diameter = [('1'..'9')].map { |i| i.to_a }.flatten
-  @diameter= (0..0).map { diameter[rand(diameter.length)] }.join
-
 
   #Generate random pass/email
   o = [('a'..'z')].map { |i| i.to_a }.flatten
@@ -54,17 +26,12 @@ Given(/^open the site$/) do
   @pass1 = (0...10).map { o[rand(o.length)] }.join
 end
 
-When(/^user press on 'Log in' from header$/) do
-  @browser.link(:text, "Sign in").wait_until_present.click
-end
-
-Then(/^he navigates to 'Log in'page$/) do
-  @browser.element(:class, "login-page-title").text =="MY ACCOUNT - LOG IN"
-end
-
-
 And(/^close the browser$/) do
   @browser.close
 end
 
 
+And(/^close the newsletter pop\-up$/) do
+  @browser.element(:css, "div.pull_right.modal_content").visible?
+  @browser.element(:class, "ui-dialog-titlebar-close").when_present.click
+end
