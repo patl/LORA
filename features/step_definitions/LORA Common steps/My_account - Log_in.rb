@@ -15,6 +15,10 @@ Then(/^he fill field with email$/) do
 end
 
 And(/^press on submit button$/) do
-  @browser.button(:value,"Submit ").click
+  @browser.button(:name,"dwfrm_requestpassword_send").click
 end
 
+
+When(/^user is logged in he can see his name in pop-up$/) do
+  @browser.element(:class, "container_accountNavigation").text == "Welcome"
+end

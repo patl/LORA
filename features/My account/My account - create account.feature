@@ -28,5 +28,5 @@ Feature: Check create account functionality
        And fill confirm password
        Then press on Create your account button
        #<------------LORA Steps End ---------->
-       When user is created he should see Welcome first and last name
+       When user is created he should see Welcome message
 
