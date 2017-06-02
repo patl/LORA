@@ -1,6 +1,7 @@
 Feature: Check Log in functionality
   Background:
     Given open the site
+    Then close the newsletter pop-up
 
   Scenario: Log in from My acc popup
           #YSL AU Steps from My account - Log In

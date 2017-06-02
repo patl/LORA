@@ -1,6 +1,7 @@
 Feature: Check create account functionality
   Background:
     Given open the site
+    Then close the newsletter pop-up
 
     Scenario: Press on my acc from header
      #YSL AU Steps from My account - create account

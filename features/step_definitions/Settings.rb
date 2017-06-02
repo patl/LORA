@@ -24,6 +24,8 @@ Given(/^open the site$/) do
   @email = (0...5).map { o[rand(o.length)] }.join
   @pass = (0...10).map { o[rand(o.length)] }.join
   @pass1 = (0...10).map { o[rand(o.length)] }.join
+
+  @address_name = (0...5).map { o[rand(o.length)] }.join
 end
 
 And(/^close the browser$/) do
@@ -31,7 +33,7 @@ And(/^close the browser$/) do
 end
 
 
-And(/^close the newsletter pop\-up$/) do
-  @browser.element(:css, "div.pull_right.modal_content").visible?
-  @browser.element(:class, "ui-dialog-titlebar-close").when_present.click
+And(/^close the newsletter pop-up$/) do
+  Watir::Wait.until {@browser.element(:class, "js_newsletter_subscribe_content").visible?}
+  @browser.element(:class, "ui-dialog-titlebar-close").wait_until_present.click
 end
