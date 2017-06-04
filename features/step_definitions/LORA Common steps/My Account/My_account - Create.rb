@@ -16,15 +16,15 @@ And(/^fill confirm email$/) do
   @browser.element(:id, "dwfrm_profile_customer_emailconfirm").send_keys(@email+'@gmail.com')
 end
 
-And(/^fill password$/) do
+And(/^fill password (.*)$/) do |usernewpassword|
   @browser.element(:id, "dwfrm_profile_login_password").to_subtype.clear
-  @browser.element(:id, "dwfrm_profile_login_password").send_keys(@pass)
+  @browser.element(:id, "dwfrm_profile_login_password").send_keys(usernewpassword)
   p @pass
 end
 
-And(/^fill confirm password$/) do
+And(/^fill confirm password (.*)$/) do |usernewpassword|
   @browser.element(:id, "dwfrm_profile_login_passwordconfirm").to_subtype.clear
-  @browser.element(:id, "dwfrm_profile_login_passwordconfirm").send_keys(@pass)
+  @browser.element(:id, "dwfrm_profile_login_passwordconfirm").send_keys(usernewpassword)
 
 end
 
