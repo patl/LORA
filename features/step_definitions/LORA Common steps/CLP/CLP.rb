@@ -126,11 +126,13 @@ end
 
 
 Then(/^user press on Checkout page on minicart pop\-up$/) do
-  @browser.element(:class, 'mini_cart_link_cart').click
+  @browser.element(:class, 'mini_cart_with_products').element(:class, 'mini_cart_link_cart').click
 end
 
 When(/^Cart page is displayed$/) do
-  @browser.element(:class, 'cart_title').visible? == true
+  sleep (10)
+
+Watir::Wait.until  {@browser.element(:class, 'cart_title').visible? == true}
 end
 
 And(/^user can see added product to cart page$/) do
@@ -143,7 +145,7 @@ Then(/^user press on remove link on cart page$/) do
 end
 
 And(/^user should see empty cart page$/) do
-  @browser.element(:class, 'empty-cart-wrapper').visible? ==true
+  Watir::Wait.until {@browser.element(:class, 'empty-cart-wrapper').visible? == true}
 end
 
 Then(/^User press on Wish list from QV$/) do

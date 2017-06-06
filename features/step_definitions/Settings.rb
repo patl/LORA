@@ -2,20 +2,21 @@
 require 'cucumber'
 #require 'rspec'
 require 'watir'
+require 'au3'
 Given(/^open the site$/) do
-  @browser = Watir::Browser.new :chrome
+  @browser = Watir::Browser.new :ff
   @browser.cookies.clear
   @browser.window.maximize
   @browser.goto 'https://storefront:loreal1@dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
   #@browser.goto 'https://storefront:loreal1@staging-apac-loreal.demandware.net/on/demandware.store/Sites-armani-au-Site'
-  begin
-    alert = @browser.alert.exists?
+
+  alert = @browser.alert.exists?
     if alert == true
       @browser.alert.ok
     else
       p 'no alert'
     end
-  end
+  sleep (10)
 
   #Generate random pass/email
   o = [('a'..'z')].map { |i| i.to_a }.flatten
