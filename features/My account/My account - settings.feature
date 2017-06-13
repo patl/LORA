@@ -15,7 +15,7 @@ Feature: Change contact information in my account and log in with new credential
 
           Then he press on Connection button
           And click on my account from header
-          When user is created he should see Welcome message
+          When user is logged in he can see My account title
           Then user press on contact information from my account menu
           And fill confirm email for test user
           And fill password <usernewpassword>
@@ -50,18 +50,18 @@ Feature: Change contact information in my account and log in with new credential
           Then he press on Add new address button
           When Add new address pop-up is displayed
           Then he fills Address name
-          And he fills first name for address
-          And he fills last name for address
-          And he fills street address for address
-          And he fills Phone number for address
-          And he fills ZIP code for address
-          And he selects State for address
-          And he select country for address
-          And he fills city for address
+          And he fills first name for address with <firstName>
+          And he fills last name for address with <lastName>
+          And he fills street address for address with <strAddress>
+          And he fills Phone number for address with <phone>
+          And he fills ZIP code for address wiht <postCode>
+          And he selects State for address with <state>
+          #And he select country for address
+          And he fills city for address with <city>
           Then he press on Save address button
           Then verify that address is saved
           And check address Nickname is correct
 
           Examples:
-              |userlogin|userpassword|
-              |ogboiko@gmail.com|ogboiko123|
+              |userlogin|userpassword|firstName|lastName|strAddress|phone|postCode|state|city|
+              |ogboiko@gmail.com|ogboiko123|Ole|Boyko|16U Mahony Rd|0999999999|2145|NSW|Constitution Hill|

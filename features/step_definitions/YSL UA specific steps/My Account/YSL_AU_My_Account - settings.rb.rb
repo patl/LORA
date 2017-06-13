@@ -3,12 +3,12 @@ And(/^click on my account from header$/) do
 end
 
 Then(/^user press on contact information from my account menu$/) do
-  @browser.element(:link_text, "Contact Information".upcase).click
+  @browser.element(:id, 'myAccountNavigationPanel').element(:link_text, "Contact Information").click
 end
 
 
 Then(/^he press on Address book from my account menu$/) do
-  @browser.element(:link_text, "Address Book".upcase).click
+  @browser.element(:id, 'myAccountNavigationPanel').element(:link_text, "Address Book").click
 end
 
 When(/^user is on Address book page$/) do
@@ -16,5 +16,5 @@ When(/^user is on Address book page$/) do
 end
 
 Then(/^he press on Add new address button$/) do
-  @browser.element(:link_text, 'Add new address').click
+  @browser.element(:xpath, ".//*[@id='addresses']/a").click
 end

@@ -3,7 +3,7 @@ When(/^user do mouseover on My account link form header$/) do
 end
 
 Then(/^he should see the Sign In pop-up$/) do
-  Watir::Wait.until {@browser.element(:class, 'js_accountNavigation').visible?}
+@browser.element(:class, 'js_accountNavigation').wait_until_present
 end
 
 Then(/^press on Create an account button$/) do
@@ -24,7 +24,7 @@ Then(/^Fill greeting Mr or Mrs or Miss$/) do
 end
 
 Then(/^he press on Connection button$/) do
-  @browser.iframe(:class, 'login_iframe').div(:text, 'Connection').click
+  @browser.iframe(:class, 'login_iframe').element(:name, 'dwfrm_login_login').click
 end
 
 And(/^Verify validation message for login field$/) do

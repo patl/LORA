@@ -39,7 +39,7 @@ Feature: Check CLP functionality
         Then check category name in breadcrumb
         Then check that Sort by drop-down is present
         And Change “Sort by” to “Price High to Low”
-        #Then Check that products are sorted correctly on the grid
+        Then Check that products are sorted correctly on the grid
 
       Scenario Outline: Variation Functionality on Quick View
 
@@ -94,5 +94,5 @@ Feature: Check CLP functionality
           Then User press on Wish list from QV
 
           Examples:
-            | userlogin   | userpassword   |
-            | ogboiko@gmail.com | ogboiko123 |
+            |userlogin|userpassword|
+            |ogboiko@gmail.com|ogboiko123|

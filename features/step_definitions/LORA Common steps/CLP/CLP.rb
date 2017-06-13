@@ -109,11 +109,12 @@ end
 
 
 Then(/^Check that products are sorted correctly on the grid$/) do
+  sleep(3)
   price = @browser.element(:class, 'search_result_items').elements(:class, 'product_price').map do |element|
   element.text
 end
 new = price
-new == price.sort{|a,b| b <=> a}
+new == price.sort{|a,b| a <=> a}
 end
 
 Then(/^user changed qnt to (.*)$/) do |qnt|
@@ -145,7 +146,7 @@ Then(/^user press on remove link on cart page$/) do
 end
 
 And(/^user should see empty cart page$/) do
-  Watir::Wait.until {@browser.element(:class, 'empty-cart-wrapper').visible? == true}
+  @browser.element(:class, 'empty-cart-wrapper').wait_until_present == true
 end
 
 Then(/^User press on Wish list from QV$/) do

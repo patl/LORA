@@ -1,24 +1,35 @@
-#require 'selenium-webdriver'
 require 'cucumber'
-#require 'rspec'
 require 'watir'
-require 'au3'
+
 Given(/^open the site$/) do
-  @browser = Watir::Browser.new :ff
-  @browser.cookies.clear
-  @browser.window.maximize
+
+@br = :ff
+
+@browser = Watir::Browser.new @br
+@browser.cookies.clear
+@browser.window.maximize
+
+if @br == :chrome
+   @browser.goto 'https://storefront:loreal1@dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
+   @browser.goto 'https://dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
+   end
+if @br == :ff
   @browser.goto 'https://storefront:loreal1@dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
-  #@browser.goto 'https://storefront:loreal1@staging-apac-loreal.demandware.net/on/demandware.store/Sites-armani-au-Site'
-
   alert = @browser.alert.exists?
-    if alert == true
-      @browser.alert.ok
-    else
-      p 'no alert'
-    end
+   if alert == true
+     @browser.alert.ok
+   else
+     p 'no alert'
+   end
   sleep (10)
+end
 
-  #Generate random pass/email
+if @br == :ie
+  IO.popen("C:\\Users\\ogboi\\OneDrive\\Documents\\authwibdow.exe")
+  @browser.goto 'https://dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
+end
+
+      #Generate random pass/email
   o = [('a'..'z')].map { |i| i.to_a }.flatten
   @name1 = (0...5).map { o[rand(o.length)] }.join
   @name2 = (0...5).map { o[rand(o.length)] }.join
@@ -35,6 +46,6 @@ end
 
 
 And(/^close the newsletter pop-up$/) do
-  Watir::Wait.until {@browser.element(:class, "js_newsletter_subscribe_content").visible?}
+  @browser.element(:class, "js_newsletter_subscribe_content").wait_until_present
   @browser.element(:class, "ui-dialog-titlebar-close").wait_until_present.click
 end

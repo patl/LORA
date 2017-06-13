@@ -16,11 +16,11 @@ When(/^user is logged in he can see his name in pop-up$/) do
 end
 
 When(/^he fills login field with (.*)$/) do |userlogin|
-  @browser.iframe(:class, 'login_iframe').text_field(:placeholder , "Email *").set(userlogin)
+  @browser.iframe(:class, 'login_iframe').text_field(:placeholder , "Email *").wait_until_present.set(userlogin)
 
 end
 
 When(/^he fills password field with (.*)$/) do |userpassword|
-  @browser.iframe(:class, 'login_iframe').text_field(:id, "dwfrm_login_password").set(userpassword)
+  @browser.iframe(:class, 'login_iframe').text_field(:id, "dwfrm_login_password").wait_until_present.set(userpassword)
 
 end

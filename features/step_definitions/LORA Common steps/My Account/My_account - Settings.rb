@@ -1,7 +1,7 @@
 And(/^press on Logout$/) do
-  Watir::Wait.until {@browser.element(:class, 'logout_link').visible?}
-  @browser.element(:class, 'logout_link').click
-end
+  @browser.element(:class, 'logout_link').wait_until_present.click
+  sleep(6)
+  end
 
 
 And(/^fill confirm email for test user$/) do
@@ -15,6 +15,7 @@ end
 
 Then(/^press on update button from my account page$/) do
   @browser.element(:name, "dwfrm_profile_confirm").click
+  sleep(10)
 end
 
 
@@ -26,29 +27,8 @@ Then(/^he fills Address name$/) do
   @browser.text_field(:id, "dwfrm_profile_address_addressid").set(@address_name)
 end
 
-And(/^he fills first name for address$/) do
-  @browser.text_field(:id, "dwfrm_profile_address_firstname").set("First name")
-end
-
 And(/^he fills last name for address$/) do
   @browser.text_field(:id, "dwfrm_profile_address_lastname").set("Last name")
-end
-
-And(/^he fills street address for address$/) do
-  @browser.text_field(:id, "dwfrm_profile_address_address1").set("Street address")
-end
-
-And(/^he fills Phone number for address$/) do
-  @browser.text_field(:id, "dwfrm_profile_address_phone").set("0789654123")
-end
-
-And(/^he fills ZIP code for address$/) do
-  @browser.text_field(:id, "dwfrm_profile_address_zip").set("12345")
-end
-
-And(/^he selects State for address$/) do
-  @browser.element(:id, 'dwfrm_profile_address_states_stateSelectBoxItText').click
-  @browser.element(:link_text, 'Alaska').click
 end
 
 And(/^he select country for address$/) do
@@ -56,19 +36,51 @@ And(/^he select country for address$/) do
   @browser.element(:link_text, 'United States').click
 end
 
-And(/^he fills city for address$/) do
-  @browser.text_field(:id, "dwfrm_profile_address_city").set("City")
-end
-
 Then(/^he press on Save address button$/) do
   @browser.button(:name,"dwfrm_profile_address_create").click
+
 end
 
 Then(/^verify that address is saved$/) do
+    @browser.element(:tag_name, "body").text.include?("Address Book")
   @browser.element(:class, 'address_item').present?
 end
 
 And(/^check address Nickname is correct$/) do
-  @browser.element(:class, 'mini_address_title').text.include?(@address_name)
+  @browser.element(:class, 'mini_address_title').text.include?(@address_name) == true
 end
 
+When(/^user is logged in he can see My account title$/) do
+  @browser.element(:class, 'primary').element(:class, 'account_user_name').text.include? 'Welcom'
+end
+
+And(/^he fills first name for address with (.*)$/) do |firstName|
+  @browser.text_field(:id, "dwfrm_profile_address_firstname").set(firstName)
+end
+
+And(/^he fills last name for address with (.*)$/) do |lastName|
+  @browser.text_field(:id, "dwfrm_profile_address_lastname").set(lastName)
+end
+
+And(/^he fills street address for address with (.*)$/) do |strAddress|
+  @browser.text_field(:id, "dwfrm_profile_address_address1").set(strAddress)
+end
+
+And(/^he fills Phone number for address with (.*)$/) do |phone|
+  @browser.text_field(:id, "dwfrm_profile_address_phone").set(phone)
+end
+
+And(/^he fills ZIP code for address wiht (.*)$/) do |postCode|
+  @browser.text_field(:id, "dwfrm_profile_address_zip").set(postCode)
+end
+
+
+And(/^he selects State for address with (.*)$/) do |state|
+  @state = state
+  @browser.element(:id, 'dwfrm_profile_address_states_stateSelectBoxItText').click
+  @browser.element(:link_text, @state).click
+end
+
+And(/^he fills city for address with (.*)$/) do |city|
+  @browser.text_field(:id, "dwfrm_profile_address_city").set(city)
+end
