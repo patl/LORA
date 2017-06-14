@@ -40,7 +40,7 @@ Feature: Check QV functionality
     And user can see correct product
     And user can see correct qnt on minicart
     #And user can see correct price
-    Then user press on Checkout page on minicart pop-up
+    Then user press on Checkout button on minicart pop-up
     When Cart page is displayed
     And user can see added product to cart page
     Then user press on remove link on cart page

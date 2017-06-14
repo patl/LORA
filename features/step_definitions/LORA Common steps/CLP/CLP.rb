@@ -43,6 +43,7 @@ end
 
 When(/^user do mousover on first product from grid$/) do
   @browser.element(:class, 'product_image_topwrapper').hover
+  @product_name = @browser.element(:class, 'action_product_block').element(:class, 'product_name').text
 end
 
 Then(/^press on QV button$/) do
@@ -126,14 +127,13 @@ Then(/^user changed qnt to (.*)$/) do |qnt|
 end
 
 
-Then(/^user press on Checkout page on minicart pop\-up$/) do
+Then(/^user press on Checkout button on minicart pop\-up$/) do
   @browser.element(:class, 'mini_cart_with_products').element(:class, 'mini_cart_link_cart').click
 end
 
 When(/^Cart page is displayed$/) do
-  sleep (10)
-
-Watir::Wait.until  {@browser.element(:class, 'cart_title').visible? == true}
+  sleep (5)
+  @browser.element(:class, 'cart_title').visible? == true
 end
 
 And(/^user can see added product to cart page$/) do
@@ -159,4 +159,27 @@ end
 
 Then(/^close the wishlist pop\-up$/) do
   @browser.element(:class, 'customwishlist').element(:class, "ui-icon-closethick").wait_until_present.click
+end
+
+
+Then(/^press on PDP button$/) do
+  @browser.element(:class, 'js_learnmorebutton').click
+end
+
+And(/^user is redirected to PDP$/) do
+  (@browser.element(:id, 'pdpMain').element(:class, 'product_name').wait_until_present.text == @product_name) == true
+end
+
+Then(/^user changed other available options \(size\/color, etc\)$/) do
+  @option = @browser.element(:id, 'va-colorSelectBoxItText').present?
+  if @option == true
+    @browse.element(:id, 'colorSelectBoxItText').click
+@browser.element(:data-id, '202 Rouge Splash ').click
+  else
+    p thre are no other options
+  end
+end
+
+And(/^verify elements on the PDP$/) do
+  pending
 end

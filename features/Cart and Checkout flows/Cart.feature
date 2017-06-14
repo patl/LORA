@@ -23,10 +23,11 @@ Feature: Check Cart functionality
       Then minicart pop-up is displayed
       And user can see correct product
       And user can see correct qnt on minicart
-      Then user press on Checkout page on minicart pop-up
+      Then user press on Checkout button on minicart pop-up
       When Cart page is displayed
       And user can see added product to cart page
       When user press on Edit link for product on Cart page
+      And user should see QV pop-up displayed
       Then user changed qnt to <qnt>
       And user press on Add to Bag button
       When Cart page is displayed
@@ -34,10 +35,11 @@ Feature: Check Cart functionality
       Then user press on add to wishlist from cart page
       When user see confirmation pop-up
       Then he press on See my wishlist link
-      When user us redirected to my account - wishlist
+      When user is redirected to my account - wishlist
       And he verified that product is displayed
       Then he press on remove link from wishlist
       Then user click on Cart link form header
+      And user press on Checkout button on minicart pop-up
       When Cart page is displayed
       Then user press on remove link on cart page
       And user should see empty cart page
@@ -61,7 +63,7 @@ Feature: Check Cart functionality
       Then minicart pop-up is displayed
       And user can see correct product
       And user can see correct qnt on minicart
-      Then user press on Checkout page on minicart pop-up
+      Then user press on Checkout button on minicart pop-up
       When Cart page is displayed
       And user can see added product to cart page
       When user press on Edit link for product on Cart page
@@ -70,9 +72,8 @@ Feature: Check Cart functionality
       When Cart page is displayed
       Then user verified that price is multiply to <qnt>
       Then user press on add to wishlist from cart page
-      Then User press on Wish list from QV
       When User see create/login pop-up
-      Then close the wishlist pop-up
+      Then close the  pop-up
       When Cart page is displayed
       Then user press on remove link on cart page
       And user should see empty cart page
