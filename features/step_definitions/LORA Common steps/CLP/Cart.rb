@@ -38,10 +38,14 @@ Then(/^he press on remove link from wishlist$/) do
 end
 
 
-Then(/^user click on Cart link form header$/) do
+Then(/^user do mousover on minicart form header$/) do
   @browser.element(:class, 'minicart').hover
 end
 
 Then(/^close the  pop\-up$/) do
   @browser.element(:class, "ui-dialog-titlebar-close").wait_until_present.click
+end
+
+When(/^Added to cart pop\-up is displayed$/) do
+  @browser.element(:class, 'addedtocart_dialog').wait_until_present
 end

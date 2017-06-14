@@ -13,9 +13,11 @@ Feature: Check PDP functionality
     And user is redirected to PDP
     Then user changed qnt to <qnt>
    # Then user changed other available options (size/color, etc)
-    #And verify elements on the PDP
-    And user press on Add to Bag button
-    Then minicart pop-up is displayed
+    And verify elements on the PDP
+    And user press on Add to Bag button on PDP
+    When Added to cart pop-up is displayed
+    Then close the  pop-up
+    When user do mousover on minicart form header
     And user can see correct product
     And user can see correct qnt on minicart
     #And user can see correct price

@@ -181,5 +181,19 @@ Then(/^user changed other available options \(size\/color, etc\)$/) do
 end
 
 And(/^verify elements on the PDP$/) do
-  pending
+  @browser.element(:class, 'main_image').present? == true
+  @browser.element(:id, 'thumbnails').present? == true
+  @browser.element(:class, 'pdp_top_content_wrapper').element(:class, 'product_name').present? = true
+  @browser.element(:class, 'pdp_top_content_wrapper').element(:class, 'rating_container').present? == true
+  @browser.element(:class, 'pdp_top_content_wrapper').element(:class, 'expand_section_wrapper').present? == true
+  @browser.element(:class, 'pdp_right_column_bottom').element(:class, 'variant_dropdown').present? == true
+  @browser.element(:class, 'pdp_right_column_bottom').element(:class, 'add_to_cart').present? == true
+  @browser.element(:class, 'pdp_right_column_bottom').element(:class, 'b-price').present? == true
+  @browser.element(:class, 'pdp_right_column_bottom').element(:class, 'product_actions').present? == true
+  @browser.element(:id, 'pdpMain').element(:class, 'description_benefits_section').present? == true
+end
+
+And(/^user press on Add to Bag button on PDP$/) do
+  @browser.element(:class, 'pdp_right_column_bottom').element(:class, 'add_to_cart').click
+
 end

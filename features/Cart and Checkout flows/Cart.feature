@@ -38,7 +38,7 @@ Feature: Check Cart functionality
       When user is redirected to my account - wishlist
       And he verified that product is displayed
       Then he press on remove link from wishlist
-      Then user click on Cart link form header
+      Then user do mousover on minicart form header
       And user press on Checkout button on minicart pop-up
       When Cart page is displayed
       Then user press on remove link on cart page

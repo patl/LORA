@@ -11,9 +11,6 @@ Feature: Check CLP functionality
       And verify elements on l2
       And press on Logo
 
-
-
-
       Scenario: CLP Sorting rules
         When User press on l1 link from menu
         When L1 page is displayed
