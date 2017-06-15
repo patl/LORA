@@ -3,7 +3,7 @@ require 'watir'
 
 Given(/^open the site$/) do
 
-@br = :ff
+@br = :chrome
 
 @browser = Watir::Browser.new @br
 @browser.cookies.clear

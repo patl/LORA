@@ -3,12 +3,12 @@ And(/^click on my account from header$/) do
 end
 
 Then(/^user press on contact information from my account menu$/) do
-  @browser.element(:id, 'myAccountNavigationPanel').element(:link_text, "Contact Information").click
+  @browser.element(:id, 'myAccountNavigationPanel').element(:link_text, "Contact Information".upcase).click
 end
 
 
 Then(/^he press on Address book from my account menu$/) do
-  @browser.element(:id, 'myAccountNavigationPanel').element(:link_text, "Address Book").click
+  @browser.element(:id, 'myAccountNavigationPanel').element(:link_text, "Address Book".upcase).click
 end
 
 When(/^user is on Address book page$/) do

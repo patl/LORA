@@ -133,7 +133,7 @@ end
 
 When(/^Cart page is displayed$/) do
   sleep (5)
-  @browser.element(:class, 'cart_title').visible? == true
+  @browser.element(:class, 'cart_title').wait_until_present == true
 end
 
 And(/^user can see added product to cart page$/) do
@@ -183,7 +183,7 @@ end
 And(/^verify elements on the PDP$/) do
   @browser.element(:class, 'main_image').present? == true
   @browser.element(:id, 'thumbnails').present? == true
-  @browser.element(:class, 'pdp_top_content_wrapper').element(:class, 'product_name').present? = true
+  @browser.element(:class, 'pdp_top_content_wrapper').element(:class, 'product_name').present? == true
   @browser.element(:class, 'pdp_top_content_wrapper').element(:class, 'rating_container').present? == true
   @browser.element(:class, 'pdp_top_content_wrapper').element(:class, 'expand_section_wrapper').present? == true
   @browser.element(:class, 'pdp_right_column_bottom').element(:class, 'variant_dropdown').present? == true
