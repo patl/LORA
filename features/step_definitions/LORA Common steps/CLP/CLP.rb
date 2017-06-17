@@ -47,7 +47,7 @@ When(/^user do mousover on first product from grid$/) do
 end
 
 Then(/^press on QV button$/) do
-  product_name = @browser.element(:class, 'product_name').text
+  #product_name = @browser.element(:class, 'product_name').text
   @browser.element(:css, '.quickviewbutton>span').click
 end
 
@@ -139,6 +139,7 @@ end
 And(/^user can see added product to cart page$/) do
   @product_in_cart = @browser.element(:class, 'cart_row').element(:class, 'product_name').text
   @product_in_cart == @product_name
+  @subtotal = @browser.element(:class, 'order_subtotal').text
 end
 
 Then(/^user press on remove link on cart page$/) do

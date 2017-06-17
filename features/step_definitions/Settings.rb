@@ -3,7 +3,7 @@ require 'watir'
 
 Given(/^open the site$/) do
 
-@br = :chrome
+@br = :ie
 
 @browser = Watir::Browser.new @br
 @browser.cookies.clear
@@ -25,7 +25,7 @@ if @br == :ff
 end
 
 if @br == :ie
-  IO.popen("C:\\Users\\ogboi\\OneDrive\\Documents\\authwibdow.exe")
+  IO.popen("C:\\Users\\ogboi\\OneDrive\\Documents\\GitHub\\LORA\\features\\support\\authwibdow.exe")
   @browser.goto 'https://dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
 end
 

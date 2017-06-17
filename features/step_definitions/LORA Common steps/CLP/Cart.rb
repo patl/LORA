@@ -16,7 +16,7 @@ Then(/^user press on add to wishlist from cart page$/) do
 end
 
 When(/^user see confirmation pop\-up$/) do
-  @browser.element(:class, 'save-result-dialog').wait_until_present
+  @browser.element(:class, 'save-result-dialog').wait_until_present.present? == true
 end
 
 Then(/^he press on See my wishlist link$/) do
