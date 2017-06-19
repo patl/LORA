@@ -2,7 +2,7 @@ Feature: Check Cart functionality
   Background:
     Given open the site
     Then close the newsletter pop-up
-
+@smoke
     Scenario Outline: Check Cart functionality as register user
       When user do mouseover on My account link form header
       Then he should see the Sign In pop-up

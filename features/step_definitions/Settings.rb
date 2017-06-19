@@ -3,11 +3,13 @@ require 'watir'
 
 Given(/^open the site$/) do
 
-@br = :ie
+@br = :ff
 
 @browser = Watir::Browser.new @br
 @browser.cookies.clear
+
 @browser.window.maximize
+#@browser.window.resize_to(320, 568)
 
 if @br == :chrome
    @browser.goto 'https://storefront:loreal1@dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
@@ -46,6 +48,6 @@ end
 
 
 And(/^close the newsletter pop-up$/) do
-  @browser.element(:class, "js_newsletter_subscribe_content").wait_until_present
+  @browser.element(:class, "js_newsletter_subscribe_content").wait_until_present.present?
   @browser.element(:class, "ui-dialog-titlebar-close").wait_until_present.click
 end
