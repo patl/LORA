@@ -1,21 +1,28 @@
 require 'cucumber'
 require 'watir'
+require 'webdriver-user-agent'
 
 Given(/^open the site$/) do
 
-@br = :ff
+@br = :chrome
 
-@browser = Watir::Browser.new @br
-@browser.cookies.clear
 
-@browser.window.maximize
-#@browser.window.resize_to(320, 568)
+
+ def desktopbrowser
+  @browser = Watir::Browser.new @br
+  @browser.cookies.clear
+  @browser.window.maximize
+ end
+
+
 
 if @br == :chrome
+   desktopbrowser
    @browser.goto 'https://storefront:loreal1@dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
    @browser.goto 'https://dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
    end
 if @br == :ff
+  desktopbrowser
   @browser.goto 'https://storefront:loreal1@dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
   alert = @browser.alert.exists?
    if alert == true
@@ -30,6 +37,19 @@ if @br == :ie
   IO.popen("C:\\Users\\ogboi\\OneDrive\\Documents\\GitHub\\LORA\\features\\support\\authwibdow.exe")
   @browser.goto 'https://dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
 end
+
+  if @br == :edge
+    IO.popen("C:\\Users\\ogboi\\OneDrive\\Documents\\GitHub\\LORA\\features\\support\\authwibdow.exe")
+    @browser.goto 'https://dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
+  end
+
+if @br == :mobile
+  driver = Webdriver::UserAgent.driver(browser: :chrome, agent: :iphone, orientation: :portrait)
+  @browser = Watir::Browser.new driver
+  @browser.goto 'https://storefront:loreal1@dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
+  @browser.goto 'https://dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
+end
+
 
       #Generate random pass/email
   o = [('a'..'z')].map { |i| i.to_a }.flatten

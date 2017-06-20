@@ -147,3 +147,13 @@ And(/^user verify that data for payment method section is correct$/) do
   @browser.element(:class, 'name').text == @CC_Name
  p @browser.element(:class, 'order_subtotal').text
 end
+
+When(/^user press on checkout as guest for mobiles$/) do
+  @browser.element(:class, 'emailonly').click
+end
+
+And(/^user selects (.*)  for mobile$/) do |state|
+  @state = state
+  @browser.element(:id, 'dwfrm_singleshipping_shippingAddress_addressFields_states_stateSelectBoxItContainer').click
+  @browser.element(:text, @state).click
+end

@@ -133,7 +133,7 @@ end
 
 When(/^Cart page is displayed$/) do
   sleep (5)
-  @browser.element(:class, 'cart_title').wait_until_present == true
+  @browser.element(:class, 'cart_title').wait_until_present
 end
 
 And(/^user can see added product to cart page$/) do
@@ -197,4 +197,20 @@ end
 And(/^user press on Add to Bag button on PDP$/) do
   @browser.element(:class, 'pdp_right_column_bottom').element(:class, 'add_to_cart').click
 
+end
+
+When(/^User press on l2_l1 link from burger menu$/) do
+  @browser.element(:class, 'menu_list_item_2').click
+  @browser.element(:class, 'menu_list_item_2_1 ').click
+  @browser.element(:class, 'menu_list_item_2_1_1').text
+  @browser.element(:class, 'menu_list_item_2_1_1').click
+end
+
+And(/^user press on Add to Bag button on PDP for mobile$/) do
+  @browser.element(:class, 'header_promo_close').click
+  @browser.element(:class, 'button_wrapper').button(:class, 'add_to_cart').click
+end
+
+And(/^user press on go to cart page from pop\-up$/) do
+  @browser.element(:class, 'addedtocart_popup_link').click
 end

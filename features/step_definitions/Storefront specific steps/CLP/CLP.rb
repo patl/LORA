@@ -8,3 +8,6 @@ Then(/^user selects any refinement$/) do
 end
 
 
+Then(/^user press on the product from the grid$/) do
+  @browser.element(:class, 'product_tile_wrapper').click
+end
