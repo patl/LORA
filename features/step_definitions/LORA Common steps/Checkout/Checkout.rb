@@ -153,7 +153,8 @@ When(/^user press on checkout as guest for mobiles$/) do
 end
 
 And(/^user selects (.*)  for mobile$/) do |state|
-  @state = state
+  #@state = state
   @browser.element(:id, 'dwfrm_singleshipping_shippingAddress_addressFields_states_stateSelectBoxItContainer').click
-  @browser.element(:text, @state).click
+  @browser.select_list(:id,"dwfrm_singleshipping_shippingAddress_addressFields_states_state").select state
 end
+

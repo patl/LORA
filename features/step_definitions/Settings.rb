@@ -6,14 +6,11 @@ Given(/^open the site$/) do
 
 @br = :chrome
 
-
-
  def desktopbrowser
   @browser = Watir::Browser.new @br
   @browser.cookies.clear
   @browser.window.maximize
  end
-
 
 
 if @br == :chrome
@@ -34,6 +31,7 @@ if @br == :ff
 end
 
 if @br == :ie
+  desktopbrowser
   IO.popen("C:\\Users\\ogboi\\OneDrive\\Documents\\GitHub\\LORA\\features\\support\\authwibdow.exe")
   @browser.goto 'https://dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
 end
@@ -44,7 +42,7 @@ end
   end
 
 if @br == :mobile
-  driver = Webdriver::UserAgent.driver(browser: :chrome, agent: :iphone, orientation: :portrait)
+  driver = Webdriver::UserAgent.driver(browser: :chrome, agent: :iphone6splus, orientation: :portrait)
   @browser = Watir::Browser.new driver
   @browser.goto 'https://storefront:loreal1@dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
   @browser.goto 'https://dev25-emea-loreal.demandware.net/s/ysl-au/en_AU/home'
