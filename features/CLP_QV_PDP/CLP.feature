@@ -10,7 +10,7 @@ Feature: Check CLP functionality
       When l2 category is displayed
       And verify elements on l2
       And press on Logo
-
+  @smoke
       Scenario: CLP Sorting rules
         When User press on l1 link from menu
         When L1 page is displayed

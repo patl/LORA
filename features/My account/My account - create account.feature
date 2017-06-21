@@ -2,7 +2,7 @@ Feature: Check create account functionality
   Background:
     Given open the site
     Then close the newsletter pop-up
-
+  @smoke
         Scenario Outline:  Fill the Create account form
        #YSL AU Steps from My account - create account
        When user do mouseover on My account link form header

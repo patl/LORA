@@ -2,7 +2,7 @@ Feature: Check QV functionality
   Background:
     Given open the site
     Then close the newsletter pop-up
-
+  @smoke
   Scenario Outline: Add product to cart from CLP QV
     When User press on l1 link from menu
     When L1 page is displayed

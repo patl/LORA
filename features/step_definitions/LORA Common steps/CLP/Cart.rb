@@ -20,7 +20,7 @@ When(/^user see confirmation pop\-up$/) do
 end
 
 Then(/^he press on See my wishlist link$/) do
-  @browser.element(:link_text, 'see my wishlist').wait_until_present.click
+  @browser.element(:link_text, 'see my wishlist'.upcase).wait_until_present.click
 end
 
 When(/^user is redirected to my account \- wishlist$/) do

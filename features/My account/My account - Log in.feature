@@ -2,7 +2,7 @@ Feature: Check Log in functionality
   Background:
     Given open the site
     Then close the newsletter pop-up
-
+  @smoke
   Scenario Outline: Log in from My acc popup
           #YSL AU Steps from My account - Log In
 
@@ -25,7 +25,7 @@ Feature: Check Log in functionality
             Examples:
             |userlogin|userpassword|
             |ogboiko@gmail.com|ogboiko123|
-
+  @smoke
     Scenario: Check reset password
           #YSL AU Steps from My account - Log In
           When user do mouseover on My account link form header

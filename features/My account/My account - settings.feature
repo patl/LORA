@@ -2,7 +2,7 @@ Feature: Change contact information in my account and log in with new credential
   Background:
     Given open the site
     Then close the newsletter pop-up
-
+  @smoke
         Scenario Outline: Change password from my account
                 #YSL AU Steps from My account - Log In
           When user do mouseover on My account link form header
@@ -37,7 +37,7 @@ Feature: Change contact information in my account and log in with new credential
           Examples:
             |userlogin|userpassword|usernewpassword|
             |ogboiko@gmail.com|ogboiko123|usernewpassword|
-
+  @smoke
         Scenario Outline: Save Address in my account
           When user do mouseover on My account link form header
           Then he should see the Sign In pop-up
