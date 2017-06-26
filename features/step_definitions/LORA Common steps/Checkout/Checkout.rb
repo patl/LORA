@@ -158,3 +158,15 @@ And(/^user selects (.*)  for mobile$/) do |state|
   @browser.select_list(:id,"dwfrm_singleshipping_shippingAddress_addressFields_states_state").select state
 end
 
+
+When(/^user fills promo code field with (.*)$/) do |promocode|
+  @browser.text_field(:id, 'dwfrm_cart_couponCode').set (promocode)
+end
+
+Then(/^user press on Apply button$/) do
+  @browser.element(:name, 'dwfrm_cart_addCoupon').click
+end
+
+And(/^Verify that promo code is applied$/) do
+  @browser.element(:class, 'coupons').wait_until_present.present? == true
+end

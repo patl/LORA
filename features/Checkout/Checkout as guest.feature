@@ -163,8 +163,8 @@ Feature: Check checkout functionality as guest user
    # And user verify that data in payment total section is correct
 
         Examples:
-      |       email     |firstName|lastName|streetNumber|addressName|city              |postCode|state|phoneNumber|ccName|ccNumber|month|year|cvv|
-      |ogboiko@gmail.com|   Ole   |  Boyko |16u         |Mahony Rd  |Constitution Hill |2145    |NSW   |0999999999|My cc name|4111111111111111|April|2019|737|
+      |       email     |firstName|lastName|streetNumber|addressName|city              |postCode|state|phoneNumber|ccName|ccNumber|month|year|cvv|promocode|
+      |ogboiko@gmail.com|   Ole   |  Boyko |16u         |Mahony Rd  |Constitution Hill |2145    |NSW   |0999999999|My cc name|4111111111111111|April|2019|737|test|
 
 
   @mobile
