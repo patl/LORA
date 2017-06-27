@@ -4,7 +4,7 @@ require 'webdriver-user-agent'
 
 Given(/^open the site$/) do
 
-@br = :chrome
+@br = :ff
 
  def desktopbrowser
   @browser = Watir::Browser.new @br
@@ -66,6 +66,6 @@ end
 
 
 And(/^close the newsletter pop-up$/) do
-  @browser.element(:class, "js_newsletter_subscribe_content").wait_until_present.present?
+  @browser.element(:class, "js_newsletter_subscribe_content").wait_until_present.present? == true
   @browser.element(:class, "ui-dialog-titlebar-close").wait_until_present.click
 end
