@@ -1,7 +1,7 @@
 Feature: Check checkout functionality as guest user
   Background:
     Given open the site
-    Then close the newsletter pop-up
+    #Then close the newsletter pop-up
 @smoke
   Scenario Outline: Make Checkout as guest user
     When User press on l1 link from menu

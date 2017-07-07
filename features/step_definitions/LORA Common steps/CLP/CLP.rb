@@ -207,10 +207,26 @@ When(/^User press on l2_l1 link from burger menu$/) do
 end
 
 And(/^user press on Add to Bag button on PDP for mobile$/) do
-  @browser.element(:class, 'header_promo_close').click
+ # @browser.element(:class, 'header_promo_close').click
   @browser.element(:class, 'button_wrapper').button(:class, 'add_to_cart').click
 end
 
 And(/^user press on go to cart page from pop\-up$/) do
   @browser.element(:class, 'addedtocart_popup_link').click
+end
+
+When(/^user entered product id (.*) in search field$/) do |id|
+  @browser.element(:class, 'search_wrapper').text_field(:name, 'q').set(id)
+end
+
+Then(/^press on search$/) do
+  @browser.element(:class, 'search_wrapper').element(:class, 'search_button').click
+end
+
+When(/^user entered product id2 (.*) in search field$/) do |id2|
+  @browser.element(:class, 'search_wrapper').text_field(:name, 'q').set(id2)
+end
+
+Then(/^user close pop\-up from pdp$/) do
+  @browser.element(:class, 'close_dialog_button').click
 end

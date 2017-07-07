@@ -77,7 +77,8 @@ Feature: Check Cart functionality
       When Cart page is displayed
       Then user press on remove link on cart page
       And user should see empty cart page
-     Examples:
+
+      Examples:
       |qnt|
       |2|
 

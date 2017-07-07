@@ -89,8 +89,9 @@ When(/^user selects payment method Credit Cart$/) do
 end
 
 Then(/^user selects:2 samples form step:2$/) do
-  @browser.element(:class, 'samples_list').element(:class, 'sample_item').button(:name, 'dwfrm_samples_addSample').click
+  @browser.element(:class, 'samples_list').button(:name, 'dwfrm_samples_addSample').click
   @browser.element(:class, 'samples_list').element(:class, 'sample_item').button(:text, 'Remove').wait_until_present
+  @browser.element(:class, 'samples_list').button(:name, 'dwfrm_samples_addSample').click
 end
 
 

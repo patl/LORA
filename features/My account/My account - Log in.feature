@@ -41,3 +41,13 @@ Feature: Check Log in functionality
           #YSL AU Steps from My account - Log In
           Then user should see password reset confirmation message
 
+Scenario Outline: log in from sogn in page
+  Then user press on my account from header
+  When sign in page is visible
+  Then user fills emial with <email>
+  Then user fills password with <password>
+  And he press on Connection button from sign in page
+
+  Examples:
+  |email|password|
+  | ogboiko@gmail.com    |       ogboiko123 |

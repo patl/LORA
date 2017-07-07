@@ -4,7 +4,7 @@ require 'webdriver-user-agent'
 
 Given(/^open the site$/) do
 
-@br = :ff
+@br = :chrome
 
  def desktopbrowser
   @browser = Watir::Browser.new @br
